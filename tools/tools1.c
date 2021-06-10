@@ -1,30 +1,15 @@
 #include <stdlib.h>
-#include "rstr.h"
-int ft_pow(double base, double power)
-{
-	int i;
-	double p;
+#include "../rstr/rstr.h"
 
-	i = 0;
-	p = 1;
-	while (i < power)
-	{
-		p *= base;
-		i++;	
-	}
-	return (p);
-}
-
-void		*ft_mem_grow(void *addr, size_t old_size, size_t new_size)
+void	*ft_mem_grow(void *addr, size_t old_size, size_t new_size)
 {
-	void *tmp;
+	void	*tmp;
 
 	tmp = malloc(new_size);
 	ft_memcpy(tmp, addr, old_size);
 	free(addr);
 	return (tmp);
 }
-
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
@@ -47,17 +32,15 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 
 size_t	ft_strlen(const char *s)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (s[i] != '\0')
-	{
 		i++;
-	}
 	return (i);
 }
 
-int		strstr_modified(const char *haystack, const char *needle)
+int	strstr_modified(const char *haystack, const char *needle)
 {
 	size_t	i;
 	size_t	j;
