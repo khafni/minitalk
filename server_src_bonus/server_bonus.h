@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.h                                           :+:      :+:    :+:   */
+/*   server_bonus.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khafni <khafni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/10 14:54:58 by khafni            #+#    #+#             */
-/*   Updated: 2021/06/10 21:11:57 by khafni           ###   ########.fr       */
+/*   Created: 2021/06/10 14:51:51 by khafni            #+#    #+#             */
+/*   Updated: 2021/06/10 21:12:53 by khafni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CLIENT_H
-# define CLIENT_H
-
+#ifndef SERVER_BONUS_H
+# define SERVER_BONUS_H
 # include <signal.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <sys/wait.h>
 # include <unistd.h>
-# include "../rstr/rstr.h"
-# include "../tools/tools.h"
+# include "../rstr_bonus/rstr_bonus.h"
+# include "../tools_bonus/tools_bonus.h"
 
-void	send_byte(pid_t pid, char byte);
-void	send_ending_metadata(pid_t pid);
-void	send_client_pid(pid_t pid);
-void	print_validation_message(int sig);
-void	encode(pid_t pid, char *message);
+void	remove_pid_from_message(t_rstr rs);
+char	*get_client_pid(t_rstr rs);
+void	print_acknowledgment_system_f_message(t_rstr rs);
+void	send_validation_message(char *pid);
+void	signal_handler(int signal);
+
 #endif

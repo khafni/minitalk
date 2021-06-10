@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.h                                           :+:      :+:    :+:   */
+/*   rstr_methods3_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khafni <khafni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/10 14:54:58 by khafni            #+#    #+#             */
-/*   Updated: 2021/06/10 21:11:57 by khafni           ###   ########.fr       */
+/*   Created: 2021/06/10 14:32:37 by khafni            #+#    #+#             */
+/*   Updated: 2021/06/10 21:05:00 by khafni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CLIENT_H
-# define CLIENT_H
+#include "rstr_bonus.h"
 
-# include <signal.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <sys/wait.h>
-# include <unistd.h>
-# include "../rstr/rstr.h"
-# include "../tools/tools.h"
+int	is_str_at_rstr_end(t_rstr rs, char *str)
+{
+	int	e;
+	int	i;
+	int	j;
 
-void	send_byte(pid_t pid, char byte);
-void	send_ending_metadata(pid_t pid);
-void	send_client_pid(pid_t pid);
-void	print_validation_message(int sig);
-void	encode(pid_t pid, char *message);
-#endif
+	e = 0;
+	i = rs->len - 1;
+	j = ft_strlen(str) - 1;
+	while (j >= 0 && rstr_get(rs, i) != 42)
+	{
+		if (rstr_get(rs, i) != str[j])
+			return (1);
+		j--;
+		i--;
+	}
+	return (0);
+}

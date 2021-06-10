@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.h                                           :+:      :+:    :+:   */
+/*   tools_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khafni <khafni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/10 14:54:58 by khafni            #+#    #+#             */
-/*   Updated: 2021/06/10 21:11:57 by khafni           ###   ########.fr       */
+/*   Created: 2021/06/10 14:01:07 by khafni            #+#    #+#             */
+/*   Updated: 2021/06/10 21:04:31 by khafni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CLIENT_H
-# define CLIENT_H
-
-# include <signal.h>
-# include <stdio.h>
+#ifndef TOOLS_BONUS_H
+# define TOOLS_BONUS_H
 # include <stdlib.h>
-# include <sys/wait.h>
+# include <stdio.h>
 # include <unistd.h>
-# include "../rstr/rstr.h"
-# include "../tools/tools.h"
 
-void	send_byte(pid_t pid, char byte);
-void	send_ending_metadata(pid_t pid);
-void	send_client_pid(pid_t pid);
-void	print_validation_message(int sig);
-void	encode(pid_t pid, char *message);
+char	*ft_itoa(int n);
+size_t	ft_strlen(const char *s);
+void	*ft_mem_grow(void *addr, size_t old_size, size_t new_size);
+void	*ft_memcpy(void *dst, const void *src, size_t n);
+int		strstr_modified(const char *haystack, const char *needle);
+int		ft_atoi(const char *str);
+void	ft_putnbr_fd(int n, int fd);
 #endif

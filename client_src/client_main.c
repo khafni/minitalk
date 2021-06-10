@@ -6,7 +6,7 @@
 /*   By: khafni <khafni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 15:00:21 by khafni            #+#    #+#             */
-/*   Updated: 2021/06/10 16:33:58 by khafni           ###   ########.fr       */
+/*   Updated: 2021/06/10 21:01:44 by khafni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,13 @@
 
 int	main(int argc, char *argv[])
 {
-	if (argc != 3)	
-		{
-			printf("error\n");
-		write(1, "client program right usage: ./client PID message\n", 49);	
+	if (argc != 3)
+	{	
+		write(1, "client program right usage: ./client PID message\n", 49);
 		return (1);
-		}
+	}
 	signal(SIGUSR1, print_validation_message);
 	encode(ft_atoi(argv[1]), argv[2]);
-	printf("%d", getpid());
 	while (1)
 		pause();
 	return (0);

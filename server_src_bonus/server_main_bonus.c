@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server_main.c                                      :+:      :+:    :+:   */
+/*   server_main_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: khafni <khafni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 15:06:23 by khafni            #+#    #+#             */
-/*   Updated: 2021/06/10 20:51:33 by khafni           ###   ########.fr       */
+/*   Updated: 2021/06/10 21:01:03 by khafni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "server.h"
+#include "server_bonus.h"
 
 /*
 ** bitshifting to the left is equivalent to multiplying by 2
