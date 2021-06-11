@@ -6,7 +6,7 @@
 /*   By: khafni <khafni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 15:08:26 by khafni            #+#    #+#             */
-/*   Updated: 2021/06/10 21:02:32 by khafni           ###   ########.fr       */
+/*   Updated: 2021/06/10 21:19:31 by khafni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	print_acknowledgment_system_f_message(t_rstr rs)
 	char	*pid;
 
 	pid = get_client_pid(rs);
-	write(1, "the user with the PID: ", 23);
+	write(1, "\nthe user with the PID: ", 24);
 	write(1, pid, ft_strlen(pid));
 	write(1, " sent this message:\n", 20);
 	free(pid);

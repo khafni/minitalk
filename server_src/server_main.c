@@ -6,12 +6,17 @@
 /*   By: khafni <khafni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 15:06:23 by khafni            #+#    #+#             */
-/*   Updated: 2021/06/10 20:51:33 by khafni           ###   ########.fr       */
+/*   Updated: 2021/06/11 11:54:56 by khafni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "server.h"
 
+void	signal_handler_helper(t_rstr rs)
+{
+	rs->len -= 15;
+	print_acknowledgment_system_f_message(rs);
+}
 /*
 ** bitshifting to the left is equivalent to multiplying by 2
 */
@@ -32,14 +37,14 @@ void	signal_handler(int signal)
 		rstr_add(rs, byte);
 		if (!is_str_at_rstr_end(rs, "!?466e^#7%6<&<%"))
 		{
-			rs->len -= 15;
-			print_acknowledgment_system_f_message(rs);
+			signal_handler_helper(rs);
 			pid = get_client_pid(rs);
 			remove_pid_from_message(rs);
 			write(1, rstr_to_cstr(rs), rs->len);
 			send_validation_message(pid);
 			rstr_destroy(rs);
 			rs = NULL;
+			free(pid);
 		}
 		byte = 0;
 	}

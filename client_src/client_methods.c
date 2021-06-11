@@ -6,7 +6,7 @@
 /*   By: khafni <khafni@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 15:03:23 by khafni            #+#    #+#             */
-/*   Updated: 2021/06/10 20:55:48 by khafni           ###   ########.fr       */
+/*   Updated: 2021/06/11 11:57:21 by khafni           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,20 @@
 void	send_byte(pid_t pid, char byte)
 {
 	int	i;
+	int	e;
 
 	i = 0;
 	while (i <= 7)
 	{
 		if ((byte >> i) & 1)
-			kill(pid, SIGUSR1);
+			e = kill(pid, SIGUSR1);
 		else
-			kill(pid, SIGUSR2);
+			e = kill(pid, SIGUSR2);
+		if (e == -1)
+		{
+			write(1, "wrong pid\n", 10);
+			exit(1);
+		}
 		usleep(100);
 		i++;
 	}
@@ -50,6 +56,7 @@ void	send_client_pid(pid_t pid)
 		send_byte(pid, pid_str[i++]);
 	while (i++ < 5)
 		send_byte(pid, '?');
+	free(pid_str);
 }
 
 void	encode(pid_t pid, char *message)
